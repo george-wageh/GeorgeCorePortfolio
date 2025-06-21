@@ -1,66 +1,67 @@
 ﻿@using GeorgePortfolio.Pages.ProjectsContent
 <div id="modalOverlay" class="modal-overlay">
     <!-- Modal Content -->
-    <div class="modal-window container d-flex flex-row justify-content-between ">
-        <button disabled="@(this.Idx==1)" @onclick="()=>Previous()" class="move-btn fa fa-arrow-left"></button>
-        <div style="width:100%;">
-            <div @onclick="()=>CloseView()" class="closeicon fa fa-times"></div>
-            @if (this.ProjectsEnum == ProjectsEnum.DealsEgDotNet)
+    <div class="modal-window container d-flex flex-row justify-content-between"
+         style="height: 90vh; padding-top: 20px; padding-bottom: 20px;">
+        <button disabled="@(this.Idx == 1)" @onclick="() => Previous()" class="move-btn fa fa-arrow-left"></button>
+
+        <div style="width: 100%; height: 100%; border-radius: 8px;">
+            <div @onclick="() => CloseView()" class="closeicon fa fa-times"></div>
+            @switch (this.ProjectsEnum)
             {
-                <DealsEgDotNet SendCount="ReceiveCount" Idx="Idx"></DealsEgDotNet>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.GamesWebsite)
-            {
-                <GamesWebsite SendCount="ReceiveCount" Idx="Idx"></GamesWebsite>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.MarketDotNet)
-            {
-                <MarketDotNet SendCount="ReceiveCount" Idx="Idx"></MarketDotNet>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.MatricesBuilder)
-            {
-                <MatricesBuilder SendCount="ReceiveCount" Idx="Idx"></MatricesBuilder>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.MediaCenterDotNet)
-            {
-                <MediaCenterDotNet SendCount="ReceiveCount" Idx="Idx"></MediaCenterDotNet>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.GamesWebsite)
-            {
-                <GamesWebsite SendCount="ReceiveCount" Idx="Idx"></GamesWebsite>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.NewsApp)
-            {
-                <NewsApp SendCount="ReceiveCount" Idx="Idx"></NewsApp>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.Obscura)
-            {
-                <Obscura SendCount="ReceiveCount" Idx="Idx"></Obscura>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.Paint)
-            {
-                <Paint SendCount="ReceiveCount" Idx="Idx"></Paint>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.PyramidsOpengl)
-            {
-                <PyramidsOpengl SendCount="ReceiveCount" Idx="Idx"></PyramidsOpengl>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.SecurityPackage)
-            {
-                <SecurityPackage SendCount="ReceiveCount" Idx="Idx"></SecurityPackage>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.WinXp)
-            {
-                <WinXp SendCount="ReceiveCount" Idx="Idx"></WinXp>
-            }
-            else if (this.ProjectsEnum == ProjectsEnum.NatigaEmt7an)
-            {
-                <NatigaEmt7an SendCount="ReceiveCount" Idx="Idx"></NatigaEmt7an>
+                case ProjectsEnum.DealsEgDotNet:
+                <DealsEgDotNet SendCount="ReceiveCount" Idx="Idx" />
+                break;
+
+                case ProjectsEnum.GamesWebsite:
+                <GamesWebsite SendCount="ReceiveCount" Idx="Idx" />
+                break;
+
+                case ProjectsEnum.MarketDotNet:
+                <MarketDotNet SendCount="ReceiveCount" Idx="Idx" />
+                break;
+
+                case ProjectsEnum.MatricesBuilder:
+                <MatricesBuilder SendCount="ReceiveCount" Idx="Idx" />
+                break;
+
+                case ProjectsEnum.MediaCenterDotNet:
+                <MediaCenterDotNet SendCount="ReceiveCount" Idx="Idx" />
+                break;
+
+                case ProjectsEnum.NewsApp:
+                <NewsApp SendCount="ReceiveCount" Idx="Idx" />
+                break;
+
+                case ProjectsEnum.Obscura:
+                <Obscura SendCount="ReceiveCount" Idx="Idx" />
+                break;
+
+                case ProjectsEnum.Paint:
+                <Paint SendCount="ReceiveCount" Idx="Idx" />
+                break;
+
+                case ProjectsEnum.PyramidsOpengl:
+                <PyramidsOpengl SendCount="ReceiveCount" Idx="Idx" />
+                break;
+
+                case ProjectsEnum.SecurityPackage:
+                <SecurityPackage SendCount="ReceiveCount" Idx="Idx" />
+                break;
+
+                case ProjectsEnum.WinXp:
+                <WinXp SendCount="ReceiveCount" Idx="Idx" />
+                break;
+
+                case ProjectsEnum.NatigaEmt7an:
+                <NatigaEmt7an SendCount="ReceiveCount" Idx="Idx" />
+                break;
             }
         </div>
+        <button disabled="@(this.Count == null || this.Count.Value - 1 == Idx)" @onclick="() => Next()" class="move-btn fa fa-arrow-right"></button>
 
-        <button disabled="@(this.Count ==null||this.Count.Value-1==Idx)" @onclick="()=>Next()" class="move-btn fa fa-arrow-right"></button>
     </div>
+
 </div>
 
 <style>
