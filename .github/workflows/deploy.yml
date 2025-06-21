@@ -1,39 +1,33 @@
-name: Build and Deploy Blazor WebAssembly to GitHub Pages
+name: Deploy Blazor WASM to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
-permissions:
-  contents: write
+    push:
+        branches: [main]
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+    deploy-to-github-pages:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+            - name: Setup .NET Core SDK
+              uses: actions/setup-dotnet@v1
+              with:
+                  dotnet-version: 9.x
+                  include-prerelease: true
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '9.0.x'
+            - name: Publish .NET Core Project
+              run: dotnet publish src/YOUR_PROJECT_NAME/YOUR_PROJECT_NAME.csproj -c Release -o release --nologo
 
-      - name: Restore dependencies
-        run: dotnet restore
+            - name: copy index.html to 404.html
+              run: cp release/wwwroot/index.html release/wwwroot/404.html
 
-      - name: Publish Blazor WebAssembly
-        run: dotnet publish -c Release -o release
+            - name: Add .nojekyll file
+              run: touch release/wwwroot/.nojekyll
 
-      - name: Copy index.html to 404.html (for GitHub Pages SPA support)
-        run: cp release/wwwroot/index.html release/wwwroot/404.html
-
-      - name: Deploy to GitHub Pages branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: release/wwwroot
-          publish_branch: gh-pages
+            - name: Commit wwwroot to GitHub Pages
+              uses: JamesIves/github-pages-deploy-action@3.7.1
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  BRANCH: gh-pages
+                  FOLDER: release/wwwroot
