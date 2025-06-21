@@ -1,0 +1,65 @@
+name: Deploy Blazor WebAssembly to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Publish
+      run: dotnet publish --configuration Release --no-build --output ./dist
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Add .nojekyll
+      run: touch ./dist/wwwroot/.nojekyll
+
+    - name: Update base tag
+      run: |
+        # Get repository name
+        REPO_NAME="${{ github.event.repository.name }}"
+        echo "Updating base href for repository: $REPO_NAME"
+        
+        # Update index.html
+        if [ -f "./dist/wwwroot/index.html" ]; then
+          sed -i "s|<base href=\"/\" />|<base href=\"/$REPO_NAME/\" />|g" ./dist/wwwroot/index.html
+          echo "Updated index.html base href"
+        else
+          echo "index.html not found!"
+          ls -la ./dist/wwwroot/
+        fi
+
+    - name: Copy index.html to 404.html
+      run: cp ./dist/wwwroot/index.html ./dist/wwwroot/404.html
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./dist/wwwroot
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
