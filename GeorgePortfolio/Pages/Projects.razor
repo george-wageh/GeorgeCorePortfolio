@@ -1,0 +1,331 @@
+﻿@page "/Projects"
+@layout MainLayout
+<div class="container">
+    @if (this.ProjectsEnum_ != null)
+    {
+        <ProjectCardView ProjectsEnum="this.ProjectsEnum_.Value" Onclose="CloseView"></ProjectCardView>
+    }
+
+    <div class="section-title">
+        Projects
+    </div>
+    <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+                <li class="filter-active">All</li>
+                <li>Web-App</li>
+                <li>Academic Project</li>
+                <li>Graduation Project</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row" style="position: relative;">
+
+        <div class="col-lg-4 col-md-6 portfolio-item">
+            <center>
+                <h4>
+                    News App
+                </h4>
+            </center>
+            <div class="portfolio-wrap">
+                <img src="projects/NewsApp/icon.png" class="project-img img-fluid" alt="">
+                <div class="portfolio-info">
+                    <div class="portfolio-links">
+                        <button @onclick="()=>ShowProjectCardView(ProjectsEnum.NewsApp)"  title="Project Details"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item">
+            <center><h4>Market</h4></center>
+            <div class="portfolio-wrap">
+                <img src="projects/MarketDotNet/icon.png" class="project-img img-fluid" alt="">
+                <div class="portfolio-info">
+                    <div class="portfolio-links">
+                        <button @onclick="()=>ShowProjectCardView(ProjectsEnum.MarketDotNet)"  title="Project Details"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item">
+            <center><h4>Media Center</h4></center>
+            <div class="portfolio-wrap">
+                <img src="projects/MediaCenterDotNet/icon.png" class="project-img img-fluid" alt="">
+                <div class="portfolio-info">
+                    <div class="portfolio-links">
+                        <button @onclick="()=>ShowProjectCardView(ProjectsEnum.MediaCenterDotNet)"  title="Project Details"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item">
+            <center>
+                <h4>
+                    DealsEg
+                </h4>
+            </center>
+            <div class="portfolio-wrap">
+                <img src="projects/DealsEgDotNet/icon.png" class="project-img img-fluid" alt="">
+                <div class="portfolio-info">
+                    <div class="portfolio-links">
+                        <button @onclick="()=>ShowProjectCardView(ProjectsEnum.DealsEgDotNet)"  title="Project Details"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item">
+            <center><h4>Obscura</h4></center>
+            <div class="portfolio-wrap">
+                <img src="projects/Obscura/icon.png" class="project-img img-fluid" alt="">
+                <div class="portfolio-info">
+                    <div class="portfolio-links">
+                        <button @onclick="()=>ShowProjectCardView(ProjectsEnum.Obscura)"  title="Project Details"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item">
+            <center><h4>Paint</h4></center>
+            <div class="portfolio-wrap">
+                <img src="projects/Paint/icon.png" class="project-img img-fluid" alt="">
+                <div class="portfolio-info">
+                    <div class="portfolio-links">
+                        <button @onclick="()=>ShowProjectCardView(ProjectsEnum.Paint)"  title="Project Details"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+
+@*         <div class="col-lg-4 col-md-6 portfolio-item">
+            <center>
+                <h4>
+                    Security Package
+                </h4>
+            </center>
+            <div class="portfolio-wrap">
+                <img src="projects/SecurityPackage/icon.png" class="project-img img-fluid" alt="">
+                <div class="portfolio-info">
+                    <div class="portfolio-links">
+                        <button @onclick="()=>ShowProjectCardView(ProjectsEnum.SecurityPackage)"  title="Project Details"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div> *@
+
+
+        <div class="col-lg-4 col-md-6 portfolio-item">
+            <center>
+                <h4>
+                    WinXp
+                </h4>
+            </center>
+            <div class="portfolio-wrap">
+                <img src="projects/WinXp/icon.png" class="project-img img-fluid" alt="">
+                <div class="portfolio-info">
+                    <div class="portfolio-links">
+                        <button @onclick="()=>ShowProjectCardView(ProjectsEnum.WinXp)"  title="Project Details"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item">
+            <center>
+                <h4>
+                    Matrices Builder
+                </h4>
+            </center>
+            <div class="portfolio-wrap">
+                <img src="projects/MatricesBuilder/icon.png" class="project-img img-fluid" alt="">
+                <div class="portfolio-info">
+                    <div class="portfolio-links">
+                        <button @onclick="()=>ShowProjectCardView(ProjectsEnum.MatricesBuilder)" title="Project Details"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item">
+            <center>
+                <h4>
+                    Games Website
+                </h4>
+            </center>
+            <div class="portfolio-wrap">
+                <img src="projects/GamesWebsite/icon.png" class="project-img img-fluid" alt="">
+                <div class="portfolio-info">
+                    <div class="portfolio-links">
+                        <button @onclick="()=>ShowProjectCardView(ProjectsEnum.GamesWebsite)"  title="Project Details"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item">
+            <center>
+                <h4>
+                    Pyramids C#-Opengl
+                </h4>
+            </center>
+            <div class="portfolio-wrap">
+                <img src="projects/PyramidsOpengl/icon.png" class="project-img img-fluid" alt="">
+                <div class="portfolio-info">
+                    <div class="portfolio-links">
+                        <button @onclick="()=>ShowProjectCardView(ProjectsEnum.PyramidsOpengl)"  title="Project Details"><i class="fa fa-info-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #portfolio-flters {
+        padding: 0;
+        margin: 0 auto 15px auto;
+        list-style: none;
+        text-align: center;
+        border-radius: 50px;
+        padding: 2px 15px;
+    }
+
+        #portfolio-flters li {
+            cursor: pointer;
+            display: inline-block;
+            padding: 8px 16px 10px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1;
+            text-transform: uppercase;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0 3px 10px 3px;
+            transition: all 0.3s ease-in-out;
+            border-radius: 4px;
+        }
+
+            #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
+                background: #209bfc;
+            }
+    .portfolio-item {
+        margin-bottom: 30px;
+    }
+
+    .portfolio-wrap {
+        transition: 0.3s;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+        .portfolio-wrap::before {
+            content: "";
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            left: 30px;
+            right: 30px;
+            top: 30px;
+            bottom: 30px;
+            transition: all ease-in-out 0.3s;
+            z-index: 2;
+            opacity: 0;
+        }
+
+        .portfolio-wrap:hover::before {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 1;
+        }
+
+        .portfolio-wrap .portfolio-info {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            z-index: 3;
+            transition: all ease-in-out 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .portfolio-wrap .portfolio-info::before {
+                display: block;
+                content: "";
+                width: 48px;
+                height: 48px;
+                position: absolute;
+                top: 35px;
+                left: 35px;
+                border-top: 3px solid #fff;
+                border-left: 3px solid #fff;
+                transition: all 0.5s ease 0s;
+                z-index: 9994;
+            }
+
+            .portfolio-wrap .portfolio-info::after {
+                display: block;
+                content: "";
+                width: 48px;
+                height: 48px;
+                position: absolute;
+                bottom: 35px;
+                right: 35px;
+                border-bottom: 3px solid #fff;
+                border-right: 3px solid #fff;
+                transition: all 0.5s ease 0s;
+                z-index: 9994;
+            }
+
+        .portfolio-wrap .portfolio-links {
+            text-align: center;
+            z-index: 4;
+        }
+
+        .portfolio-wrap:hover .portfolio-info {
+            opacity: 1;
+        }
+
+            .portfolio-wrap:hover .portfolio-info::before {
+                top: 15px;
+                left: 15px;
+            }
+
+            .portfolio-wrap:hover .portfolio-info::after {
+                bottom: 15px;
+                right: 15px;
+            }
+
+    .portfolio-links button {
+        font-size: 46px;
+        color: #fff;
+        background: none;
+        border: none;
+    }
+
+        .portfolio-links button:hover {
+            color: #209bfc;
+        }
+
+    .portfolio-wrap .project-img{
+        width: 535px;
+        height: 179px;
+        object-fit: contain;
+        background: #153134;
+    }
+
+</style>

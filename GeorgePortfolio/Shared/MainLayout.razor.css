@@ -1,0 +1,18 @@
+﻿ul {
+    margin: 0;
+    margin-top: 6px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+header {
+    background-color: #09353a;
+}
+.container {
+    max-width: 1140px;
+}
