@@ -3,7 +3,8 @@ name: Build and Deploy Blazor WebAssembly to GitHub Pages
 on:
   push:
     branches:
-      - main  # or master
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -19,7 +20,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.x'  # or 7.0.x or 9.0.x if preview
+          dotnet-version: '9.0.x'
 
       - name: Restore dependencies
         run: dotnet restore
