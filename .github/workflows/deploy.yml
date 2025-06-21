@@ -2,9 +2,9 @@ name: Deploy Blazor WASM to GitHub Pages
 
 on:
   push:
-    branches: master
+    branches: [ master ]
   pull_request:
-    branches: master
+    branches: [ master ]
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -39,6 +39,9 @@ jobs:
       
     - name: Publish
       run: dotnet publish --no-build --configuration Release --output ./publish
+      
+    - name: Copy index.html to 404.html for client-side routing
+      run: cp ./publish/wwwroot/index.html ./publish/wwwroot/404.html
       
     - name: Setup Pages
       uses: actions/configure-pages@v4
