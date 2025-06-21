@@ -53,6 +53,10 @@
             {
                 <WinXp SendCount="ReceiveCount" Idx="Idx"></WinXp>
             }
+            else if (this.ProjectsEnum == ProjectsEnum.NatigaEmt7an)
+            {
+                <NatigaEmt7an SendCount="ReceiveCount" Idx="Idx"></NatigaEmt7an>
+            }
         </div>
 
         <button disabled="@(this.Count ==null||this.Count.Value-1==Idx)" @onclick="()=>Next()" class="move-btn fa fa-arrow-right"></button>
